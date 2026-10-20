@@ -1,0 +1,7 @@
+packages:
+  - '.'
+
+# esbuild ships a platform binary via a postinstall script; pnpm blocks
+# unapproved build scripts by default, so allow this one explicitly.
+onlyBuiltDependencies:
+  - esbuild
