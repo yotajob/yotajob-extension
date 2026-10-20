@@ -13,6 +13,9 @@ chrome.runtime.onMessage.addListener((message: { type: string }, _sender, sendRe
         const { flow, verifier } = await startDeviceFlow()
         sendResponse({ ok: true, userCode: flow.user_code, verificationUri: flow.verification_uri })
 
+        // The person approves the code in the web app. We open it for them.
+        await chrome.tabs.create({ url: flow.verification_uri })
+
         const deadline = Date.now() + flow.expires_in * 1000
         while (Date.now() < deadline) {
           await new Promise((resolve) => setTimeout(resolve, flow.interval * 1000))
