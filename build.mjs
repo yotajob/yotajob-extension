@@ -1,5 +1,5 @@
-import { build, context } from 'esbuild'
 import { cp, mkdir, rm } from 'node:fs/promises'
+import { build, context } from 'esbuild'
 
 const watch = process.argv.includes('--watch')
 
@@ -17,7 +17,7 @@ const options = {
   external: ['chrome'],
 }
 
-await cp('src/manifest.json', 'dist/manifest.json')
+await cp('manifest.json', 'dist/manifest.json')
 await cp('src/popup.html', 'dist/popup.html')
 await cp('src/popup.css', 'dist/popup.css')
 

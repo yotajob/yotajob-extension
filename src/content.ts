@@ -10,3 +10,5 @@ declare global {
 }
 
 window.__yotajobDetect = () => null
+
+export {}

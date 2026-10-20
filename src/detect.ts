@@ -45,12 +45,12 @@ export function detectRole(): DetectedRole {
 
   const location =
     (posting?.jobLocation as { address?: { addressLocality?: string } } | undefined)?.address
-      ?.addressLocality ??
-    null
+      ?.addressLocality ?? null
 
-  const salary = (posting?.baseSalary as { value?: { minValue?: number; maxValue?: number; unitText?: string } } | undefined)
-    ? formatSalary(posting.baseSalary)
-    : null
+  const baseSalary = posting?.baseSalary as
+    | { value?: { minValue?: number; maxValue?: number; unitText?: string } }
+    | undefined
+  const salary = baseSalary ? formatSalary(baseSalary) : null
 
   return {
     title,
@@ -62,7 +62,9 @@ export function detectRole(): DetectedRole {
   }
 }
 
-function formatSalary(baseSalary: { value?: { minValue?: number; maxValue?: number; unitText?: string } }): string | null {
+function formatSalary(baseSalary: {
+  value?: { minValue?: number; maxValue?: number; unitText?: string }
+}): string | null {
   const value = baseSalary.value
   if (!value || value.minValue == null) return null
   const unit = value.unitText === 'HOUR' ? '/hr' : ''

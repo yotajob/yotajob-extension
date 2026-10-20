@@ -1,4 +1,4 @@
-import { startDeviceFlow, pollForToken } from './auth.ts'
+import { pollForToken, startDeviceFlow } from './auth.ts'
 import { setToken } from './storage.ts'
 
 /**

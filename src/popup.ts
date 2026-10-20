@@ -1,5 +1,5 @@
-import { detectRole } from './detect.ts'
 import { saveRole } from './api.ts'
+import { detectRole } from './detect.ts'
 import { getToken } from './storage.ts'
 
 const status = document.querySelector('#status')
@@ -19,7 +19,10 @@ async function render(): Promise<void> {
 
 signIn?.addEventListener('click', () => {
   chrome.runtime.sendMessage({ type: 'start-sign-in' }, (response: { userCode?: string }) => {
-    if (code) code.textContent = response.userCode ? `Enter ${response.userCode} at yotajob.com/activate` : ''
+    if (code)
+      code.textContent = response.userCode
+        ? `Enter ${response.userCode} at yotajob.com/activate`
+        : ''
     void render()
   })
 })

@@ -1,5 +1,5 @@
-import { API_URL } from './config.ts'
 import type { DetectedRole } from './config.ts'
+import { API_URL } from './config.ts'
 import { getToken } from './storage.ts'
 
 /** Save a posting to the seeker's private ledger. */

@@ -24,7 +24,7 @@ export type TokenResponse = {
 async function pkce(): Promise<{ verifier: string; challenge: string }> {
   const bytes = crypto.getRandomValues(new Uint8Array(32))
   const verifier = btoa(String.fromCharCode(...bytes))
-  .replace(/\+/g, '-')
+    .replace(/\+/g, '-')
     .replace(/\//g, '_')
     .replace(/=+$/, '')
 
@@ -42,13 +42,20 @@ export async function startDeviceFlow(): Promise<{ flow: DeviceCode; verifier: s
   const response = await fetch(`${API_URL}/v1/auth/device/code`, {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
-    body: JSON.stringify({ client_id: CLIENT_ID, code_challenge: challenge, code_challenge_method: 'S256' }),
+    body: JSON.stringify({
+      client_id: CLIENT_ID,
+      code_challenge: challenge,
+      code_challenge_method: 'S256',
+    }),
   })
   if (!response.ok) throw new Error('Could not start sign-in.')
   return { flow: (await response.json()) as DeviceCode, verifier }
 }
 
-export async function pollForToken(flow: DeviceCode, verifier: string): Promise<TokenResponse | null> {
+export async function pollForToken(
+  flow: DeviceCode,
+  verifier: string,
+): Promise<TokenResponse | null> {
   const response = await fetch(`${API_URL}/v1/auth/device/token`, {
     method: 'POST',
     headers: { 'content-type': 'application/json' },
