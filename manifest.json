@@ -3,8 +3,14 @@
   "name": "Yotajob",
   "version": "0.1.0",
   "description": "Save a job posting to your private Yotajob ledger, and fill application fields only after you review them.",
-  "permissions": ["activeTab", "storage", "scripting"],
-  "host_permissions": ["https://api.yotajob.com/*"],
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://api.yotajob.com/*"
+  ],
   "action": {
     "default_popup": "popup.html",
     "default_title": "Yotajob"
@@ -15,15 +21,26 @@
   },
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*"],
-      "js": ["content.js"],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "content.js"
+      ],
       "run_at": "document_idle"
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["content.css"],
-      "matches": ["http://*/*", "https://*/*"]
+      "resources": [
+        "content.css"
+      ],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ]
     }
-  ]
+  ],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA469nvZoe7VdzBOWFyu5fdyASugbLA4LSxiHRkKI/YzagsTGmGiUkMqGehgX8bzq+he4XOkWadnU68F5mHykB2O/IBcRWN6srXIrStrvep1YrjS+v0q7+gVGioIGKCIdPQuLbzyGq1FscFg2RqNEaERApBa2EVqa1jSBj0QRFtmWqlKd2/xTGzw41LqbyFPLZhfK1uHqH+OZvl3sNlrZbSACkLDNp/6KatjY0l2MxZH1k4M6Y/G3+WVAO6JjATqWFTvS+WKCqzoN4nM/sTE1cwAf0jbEIIKeCT0nuQ9m1bjZ067B0Nu8Q4+lkUEdX+AGUA/N5eZJ1n18NxGkXfVS+OQIDAQAB"
 }
