@@ -1,0 +1,21 @@
+{
+  "name": "@yotajob/extension",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Save job postings to your private Yotajob ledger, and fill application fields only after you review them.",
+  "scripts": {
+    "build": "node build.mjs",
+    "watch": "node build.mjs --watch",
+    "lint": "biome check src",
+    "typecheck": "tsc --noEmit",
+    "zip": "node build.mjs && node scripts/zip.mjs",
+    "test": "node --test test/"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.15",
+    "@types/chrome": "latest",
+    "esbuild": "0.28.2",
+    "typescript": "7.0.2"
+  }
+}
